@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wake_Up.Views.AlarmDetails"
+             Title="Set Alarm"
+             xmlns:models="clr-namespace:Wake_Up.Models"
+             xmlns:viewmodels="clr-namespace:Wake_Up.ViewModels">
+    <ContentPage.BindingContext>
+        <viewmodels:AlarmViewModel/>
+    </ContentPage.BindingContext>
+    <VerticalStackLayout Spacing="20" Margin="10">
+        <Entry IsVisible="false" Text="{Binding Alarm.Id, StringFormat='{0}'}"/>
+        <TimePicker HorizontalOptions="Center" HeightRequest="150" Time="{Binding Alarm.Time}" FontSize="40" />
+        <ContentView BackgroundColor="Black" Padding="0,0,0,2">
+            <Entry Placeholder="Enter Alarm Name" PlaceholderColor="Black" BackgroundColor="White" Text="{Binding Alarm.Title}" FontSize="14"/>
+        </ContentView>
+        <ContentView BackgroundColor="Black" Padding="0,0,0,2">
+            <Entry Placeholder="Enter Youtube Url To Play" PlaceholderColor="Black" BackgroundColor="White" Text="{Binding Alarm.YoutubeUrl}" FontSize="14"/>
+        </ContentView>
+        <FlexLayout Direction="Row"
+                    JustifyContent="SpaceBetween"
+                    AlignItems="Center">
+            <Label Text="Vibrate" FontSize="14"/>
+            <Switch IsToggled="{Binding Alarm.Vibrate}"/>
+        </FlexLayout>
+        <ScrollView Orientation="Horizontal">
+            <HorizontalStackLayout>
+                <Label Text="Repeat:" VerticalTextAlignment="Center" Margin="0,0,5,0" FontSize="14"/>
+                <Label Text="Sun" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Sun" VerticalOptions="Center" />
+                <Label Text="Mon" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Mon" VerticalOptions="Center"/>
+                <Label Text="Tue" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Tue" VerticalOptions="Center"/>
+                <Label Text="Wed" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Wed" VerticalOptions="Center"/>
+                <Label Text="Thu" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Thu" VerticalOptions="Center"/>
+                <Label Text="Fri" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Fri" VerticalOptions="Center"/>
+                <Label Text="Sat" VerticalTextAlignment="Center"/>
+                <CheckBox x:Name="Sat" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+        </ScrollView>
+        <Button Text="Add" Clicked="Add_Clicked"/>
+    </VerticalStackLayout>
+</ContentPage>
